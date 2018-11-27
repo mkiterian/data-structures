@@ -41,14 +41,43 @@ class DoublyLinkedList {
     this.length -= 1;
     return nodeToPop;
   }
+
+  shift(){
+    if(!this.head) return undefined;
+    const nodeToRemove = this.head;
+    if(this.length === 1){
+      this.head = null;
+      this.tail = null;
+    } else {
+      this.head = this.head.next;
+      this.head.prev = null;
+      nodeToRemove.next = null;
+    }
+    this.length -= 1;
+    return nodeToRemove;
+  }
+
+  unshift(val){
+    const newNode = new Node(val);
+    if(!this.head){
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.head.prev = newNode;
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length += 1;
+    return this;
+  }
 }
 
 list = new DoublyLinkedList();
 list.push(21);
-console.log(list);
+// console.log(list);
 list.push(22);
-console.log(list);
+// console.log(list);
 list.push(23);
-console.log(list);
-console.log('POPPED', list.pop());
+// console.log(list);
+console.log('UNSHIFTED', list.unshift(20));
 console.log(list)
