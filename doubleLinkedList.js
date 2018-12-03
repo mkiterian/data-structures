@@ -70,14 +70,28 @@ class DoublyLinkedList {
     this.length += 1;
     return this;
   }
-}
 
-list = new DoublyLinkedList();
-list.push(21);
-// console.log(list);
-list.push(22);
-// console.log(list);
-list.push(23);
-// console.log(list);
-console.log('UNSHIFTED', list.unshift(20));
-console.log(list)
+  get(index){
+    if(index < 0 || index >= this.length) return undefined;
+    // if(this.length === 1) return this.head;
+    if(index <= this.length/2){
+      let currentNode = this.head;
+      for(let i = 0; i <= this.length/2; i++){
+        if(i === index){
+          break;
+        }
+        currentNode = currentNode.next;
+      }
+      return currentNode;
+    } else {
+      let currentNode = this.tail;
+      for(let i = this.length; i > this.length/2; i--){
+        if(i === index){
+          break;
+        }
+        currentNode = currentNode.prev;
+      }
+      return currentNode;
+    }
+  }
+}
