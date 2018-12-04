@@ -73,7 +73,6 @@ class DoublyLinkedList {
 
   get(index){
     if(index < 0 || index >= this.length) return undefined;
-    // if(this.length === 1) return this.head;
     if(index <= this.length/2){
       let currentNode = this.head;
       for(let i = 0; i <= this.length/2; i++){
@@ -82,7 +81,6 @@ class DoublyLinkedList {
         }
         currentNode = currentNode.next;
       }
-      return currentNode;
     } else {
       let currentNode = this.tail;
       for(let i = this.length; i > this.length/2; i--){
@@ -91,7 +89,7 @@ class DoublyLinkedList {
         }
         currentNode = currentNode.prev;
       }
-      return currentNode;
     }
+    return currentNode;
   }
 }
