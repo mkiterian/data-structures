@@ -119,6 +119,23 @@ class DoublyLinkedList {
     this.length += 1;
     return true;
   }
+
+  remove(index){
+    if (index < 0 || index >= this.length) {
+      return false;
+    }
+    if(index === 0) return this.shift();
+    if(index === this.length-1) return this.pop();
+    const removeNode = this.get(index);
+    const prevNode = removeNode.prev;
+    const nextNode = removeNode.next;
+    prevNode.next = nextNode;
+    nextNode.prev = prevNode;
+    removeNode.prev = null;
+    removeNode.next = null;
+    this.length -= 1;
+    return removeNode;
+  }
 }
 
 const listicle = new DoublyLinkedList();
@@ -127,6 +144,7 @@ listicle.push("Primer");
 listicle.push("Results");
 listicle.push("Tucker and Dale");
 
-listicle.insert(1, "11:14");
+console.log(listicle.remove(2));
+console.log('======================================')
 console.log(listicle);
-console.log(listicle.get(2));
+
