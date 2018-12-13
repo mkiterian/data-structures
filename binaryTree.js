@@ -39,20 +39,23 @@ class BinaryTree {
     }
   }
 
-  search(value){
-    if(this.root.val === value){
+  search(value) {
+    if (this.root.val === value) {
       return true;
     }
     let currentNode = this.root;
-    while(true){
-      if(value > currentNode.val){
-        if(currentNode.right){
-          if (currentNode.right.val === value) return true
-        } else {
-          return false;
-        }
+    let found = false;
+    while (current && !found) {
+      if (value < currentNode.val) {
+        currentNode = currentNode.left;
+      } else if (value > currentNode.val) {
+        currentNode = currentNode.right;
+      } else {
+        found = true;
       }
     }
+    if (!found) return undefined;
+    return currentNode;
   }
 }
 
