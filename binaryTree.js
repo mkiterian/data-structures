@@ -38,6 +38,22 @@ class BinaryTree {
       }
     }
   }
+
+  search(value){
+    if(this.root.val === value){
+      return true;
+    }
+    let currentNode = this.root;
+    while(true){
+      if(value > currentNode.val){
+        if(currentNode.right){
+          if (currentNode.right.val === value) return true
+        } else {
+          return false;
+        }
+      }
+    }
+  }
 }
 
 const bTree = new BinaryTree();
@@ -48,3 +64,4 @@ bTree.insert(22);
 bTree.insert(17);
 bTree.insert(15);
 console.log(bTree);
+console.log(bTree.search(22));
