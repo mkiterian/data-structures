@@ -1,5 +1,5 @@
 class Node {
-  constructor(val){
+  constructor(val) {
     this.val = val;
     this.left = null;
     this.right = null;
@@ -8,53 +8,43 @@ class Node {
 }
 
 class BinaryTree {
-   constructor(val){
+  constructor() {
     this.root = null;
-   }
+  }
 
-   insert(val){
-     const newNode = new Node(val);
-     if(!this.root) {
-       this.root = newNode;
-       return this;
-     } else {
-       let currentNode = this.root;
-       while(true){
-         if(val === currentNode.val){
-          currentNode.count += 1;
+  insert(value) {
+    const newNode = new Node(value);
+    if (!this.root) {
+      this.root = newNode;
+      return this;
+    }
+    let currentNode = this.root;
+    while (true) {
+      if (value < currentNode.val) {
+        if (!currentNode.left) {
+          currentNode.left = newNode;
           return this;
-         }
-         if(val < currentNode.val){
-           if(!currentNode.left){
-             currentNode.left = newNode;
-             return this;
-           } else {
-             currentNode = currentNode.left;
-           }
-         } else if(val > currentNode.val){
-          if(!currentNode.right){
-            currentNode.right = newNode;
-            return this;
-          } else {
-            currentNode = currentNode.right;
-          }
-         }
-       }
-     }
-   }
+        }
+        currentNode = currentNode.left;
+      } else if (value > currentNode.val) {
+        if (!currentNode.right) {
+          currentNode.right = newNode;
+          return this;
+        }
+        currentNode = currentNode.right;
+      } else if (value === currentNode.val) {
+        currentNode.count += 1;
+        return this;
+      }
+    }
+  }
 }
 
 const bTree = new BinaryTree();
-bTree.insert(20);
-console.log(bTree);
-console.log('---------------------------')
-bTree.insert(12);
-console.log(bTree);
-console.log('---------------------------')
-bTree.insert(8);
-bTree.insert(6);
-bTree.insert(20);
+bTree.root = new Node("20");
+bTree.insert(15);
+bTree.insert(25);
 bTree.insert(22);
-bTree.insert(33);
+bTree.insert(17);
+bTree.insert(15);
 console.log(bTree);
-console.log('---------------------------')
