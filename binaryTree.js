@@ -57,14 +57,28 @@ class BinaryTree {
     if (!found) return undefined;
     return currentNode;
   }
+
+  bfs(){
+    const values = [];
+    const queue = [];
+    let currentNode = this.root;
+    queue.push(currentNode);
+    while(queue.length){
+      currentNode = queue.shift();
+      values.push(currentNode.val);
+      if(currentNode.left) queue.push(currentNode.left);
+      if(currentNode.right) queue.push(currentNode.right);
+    }
+    return values;
+  }
 }
 
 const bTree = new BinaryTree();
-bTree.root = new Node("20");
+bTree.root = new Node(20);
 bTree.insert(15);
 bTree.insert(25);
 bTree.insert(22);
 bTree.insert(17);
 bTree.insert(15);
-console.log(bTree);
-console.log(bTree.search(22));
+// console.log(bTree);
+console.log(bTree.bfs());
