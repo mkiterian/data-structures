@@ -71,14 +71,32 @@ class BinaryTree {
     }
     return values;
   }
+
+  dfsPreOrder(){
+    const visited = [];
+    let currentNode = this.root;
+    const result = this.traverse(currentNode, visited);
+    return result;
+  }
+
+  traverse(node, visited){
+    visited.push(node.val);
+    if(node.left){
+      this.traverse(node.left, visited);
+    }
+    if(node.right){
+      this.traverse(node.right, visited);
+    }
+    return visited;
+  }
 }
 
 const bTree = new BinaryTree();
-bTree.root = new Node(20);
+bTree.root = new Node(10);
+bTree.insert(6);
 bTree.insert(15);
-bTree.insert(25);
-bTree.insert(22);
-bTree.insert(17);
-bTree.insert(15);
+bTree.insert(3);
+bTree.insert(8);
+bTree.insert(20);
 // console.log(bTree);
-console.log(bTree.bfs());
+console.log(bTree.dfsPreOrder());
