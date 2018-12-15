@@ -109,6 +109,25 @@ class BinaryTree {
     const result = traverse(currentNode);
     return result;
   }
+
+  dfsInOrder(){
+    const visited = [];
+    let currentNode = this.root;
+
+    const traverse = (node) => {
+      if(node.left){
+        traverse(node.left);
+      }
+      visited.push(node.val);
+      if(node.right){
+        traverse(node.right);
+      }
+      return visited;
+    }
+
+    const result = traverse(currentNode);
+    return result;
+  }
 }
 
 const bTree = new BinaryTree();
@@ -121,3 +140,4 @@ bTree.insert(20);
 // console.log(bTree);
 console.log(bTree.dfsPreOrder());
 console.log(bTree.dfsPostOrder());
+console.log(bTree.dfsInOrder());
