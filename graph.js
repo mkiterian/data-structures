@@ -29,23 +29,3 @@ class Graph {
   }
 }
 
-const graph = new Graph();
-graph.addVertex("Nairobi");
-graph.addVertex("Kisumu");
-graph.addVertex("Mombasa");
-graph.addVertex("Bungoma");
-graph.addVertex("Kericho");
-graph.addVertex("Narok");
-graph.addVertex("Nakuru");
-graph.addEdge("Nairobi", "Kisumu");
-graph.addEdge("Nairobi", "Kericho");
-graph.addEdge("Nairobi", "Mombasa");
-graph.addEdge("Kericho", "Kisumu");
-graph.addEdge("Nairobi", "Narok");
-graph.addEdge("Nairobi", "Nakuru");
-graph.addEdge("Bungoma", "Kisumu");
-graph.addEdge("Mombasa", "Narok");
-graph.addEdge("Nairobi", "Kisumu");
-console.log(graph);
-graph.removeVertex("Nairobi");
-console.log(graph);
