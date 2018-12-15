@@ -75,19 +75,39 @@ class BinaryTree {
   dfsPreOrder(){
     const visited = [];
     let currentNode = this.root;
-    const result = this.traverse(currentNode, visited);
+
+    const traverse = (node) => {
+      visited.push(node.val);
+      if(node.left){
+        traverse(node.left);
+      }
+      if(node.right){
+        traverse(node.right);
+      }
+      return visited;
+    }
+
+    const result = traverse(currentNode);
     return result;
   }
 
-  traverse(node, visited){
-    visited.push(node.val);
-    if(node.left){
-      this.traverse(node.left, visited);
+  dfsPostOrder(){
+    const visited = [];
+    let currentNode = this.root;
+
+    const traverse = (node) => {
+      if(node.left){
+        traverse(node.left);
+      }
+      if(node.right){
+        traverse(node.right);
+      }
+      visited.push(node.val);
+      return visited;
     }
-    if(node.right){
-      this.traverse(node.right, visited);
-    }
-    return visited;
+
+    const result = traverse(currentNode);
+    return result;
   }
 }
 
@@ -100,3 +120,4 @@ bTree.insert(8);
 bTree.insert(20);
 // console.log(bTree);
 console.log(bTree.dfsPreOrder());
+console.log(bTree.dfsPostOrder());
